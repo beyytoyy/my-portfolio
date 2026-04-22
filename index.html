@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aminoden Mangoda — Full Stack Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: #1e1e2e;
+      --accent: #7c3aed;
+      --accent2: #06b6d4;
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --green: #10b981;
+      --orange: #f59e0b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(10,10,15,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.05rem;
+      color: var(--accent2);
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,58,237,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(6,182,212,.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; max-width: 760px; }
+
+    .avatar-ring {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      padding: 3px;
+    }
+    .avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+    }
+
+    .avatar-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-family: 'Fira Code', monospace;
+      font-size: .8rem;
+      color: var(--accent2);
+      background: rgba(6,182,212,.1);
+      border: 1px solid rgba(6,182,212,.25);
+      padding: .35rem .9rem;
+      border-radius: 99px;
+      margin-bottom: 1.5rem;
+    }
+    .badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.4;} }
+
+    h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 700; line-height: 1.1; margin-bottom: .5rem; }
+    h1 span { background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-title-sub { font-size: 1.1rem; color: var(--accent2); font-weight: 500; margin-bottom: 1rem; letter-spacing: .02em; }
+    .hero-location { font-size: .85rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 560px; margin: 0 auto 2.5rem; }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      padding: .75rem 1.75rem;
+      border-radius: 8px;
+      font-size: .95rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all .2s;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #6d28d9; transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── SECTIONS ── */
+    section { padding: 5.5rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Fira Code', monospace;
+      font-size: .78rem;
+      color: var(--accent2);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; margin-bottom: 1rem; }
+    .section-desc { color: var(--muted); max-width: 560px; margin-bottom: 3rem; }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.25rem; }
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .skill-icon { font-size: 1.8rem; margin-bottom: .75rem; }
+    .skill-name { font-weight: 600; margin-bottom: .25rem; }
+    .skill-desc { font-size: .84rem; color: var(--muted); line-height: 1.5; }
+
+    .tech-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 2rem; }
+    .pill {
+      font-family: 'Fira Code', monospace;
+      font-size: .78rem;
+      padding: .3rem .75rem;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: var(--surface);
+    }
+
+    /* ── SOFT SKILLS ── */
+    .soft-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .soft-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-size: .9rem;
+      color: var(--muted);
+    }
+    .soft-card .sc-icon { font-size: 1.3rem; }
+
+    /* ── PROJECTS ── */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color .2s, transform .2s;
+    }
+    .project-card:hover { border-color: var(--accent2); transform: translateY(-4px); }
+    .project-img {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+    .project-img.p1 { background: linear-gradient(135deg, #1e1b4b, #2e1065); }
+    .project-img.p2 { background: linear-gradient(135deg, #064e3b, #0c4a6e); }
+    .project-img.p3 { background: linear-gradient(135deg, #1c1917, #7c2d12); }
+    .project-body { padding: 1.5rem; }
+    .project-tags { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .75rem; }
+    .tag {
+      font-size: .7rem;
+      font-weight: 600;
+      padding: .2rem .55rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .tag-react { background: rgba(6,182,212,.15);  color: var(--accent2); }
+    .tag-node  { background: rgba(16,185,129,.15); color: var(--green); }
+    .tag-pg    { background: rgba(245,158,11,.15);  color: var(--orange); }
+    .tag-mongo { background: rgba(16,185,129,.15); color: var(--green); }
+    .tag-fire  { background: rgba(239,68,68,.15);  color: #f87171; }
+    .tag-js    { background: rgba(250,204,21,.12);  color: #fde047; }
+    .tag-py    { background: rgba(124,58,237,.15);  color: #a78bfa; }
+    .tag-sql   { background: rgba(245,158,11,.15);  color: var(--orange); }
+    .project-body h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: .35rem; }
+    .project-type { font-size: .75rem; color: var(--accent2); font-weight: 600; text-transform: uppercase; letter-spacing: .08em; margin-bottom: .35rem; }
+    .project-body p { font-size: .87rem; color: var(--muted); margin-bottom: 1rem; line-height: 1.55; }
+    .project-highlights { list-style: none; margin-bottom: 1rem; }
+    .project-highlights li {
+      font-size: .83rem;
+      color: var(--muted);
+      padding: .2rem 0;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .project-highlights li::before { content: '→'; position: absolute; left: 0; color: var(--accent2); }
+    .project-links { display: flex; gap: .75rem; }
+    .project-links a {
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--accent2);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+      transition: color .2s;
+    }
+    .project-links a:hover { color: #fff; }
+
+    /* ── TIMELINE (Experience + Education) ── */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px; bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2));
+      border-radius: 2px;
+    }
+    .timeline-item { position: relative; margin-bottom: 2.5rem; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.4rem;
+      top: .4rem;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 3px rgba(124,58,237,.3);
+    }
+    .tl-meta    { font-size: .78rem; color: var(--accent2); font-family: 'Fira Code', monospace; margin-bottom: .2rem; }
+    .tl-role    { font-size: 1.05rem; font-weight: 600; }
+    .tl-company { color: var(--muted); font-size: .9rem; margin-bottom: .6rem; }
+    .tl-list    { list-style: none; }
+    .tl-list li {
+      font-size: .87rem;
+      color: var(--muted);
+      padding: .18rem 0;
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+    .tl-list li::before { content: '·'; position: absolute; left: 0; color: var(--accent); font-size: 1rem; }
+
+    .edu-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      font-size: .75rem;
+      font-weight: 600;
+      padding: .25rem .65rem;
+      border-radius: 99px;
+      background: rgba(245,158,11,.12);
+      color: var(--orange);
+      border: 1px solid rgba(245,158,11,.25);
+      margin-top: .5rem;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    @media (max-width: 680px) { .about-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .stat-num { font-size: 1.9rem; font-weight: 700; color: var(--accent2); }
+    .stat-label { font-size: .78rem; color: var(--muted); margin-top: .2rem; }
+
+    /* ── CONTACT ── */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3rem;
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(124,58,237,.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .contact-card h3 { font-size: 1.8rem; margin-bottom: .6rem; }
+    .contact-card > p { color: var(--muted); margin-bottom: 2rem; }
+    .contact-info { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1.75rem; }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      font-size: .9rem;
+      color: var(--muted);
+    }
+    .contact-row a { color: var(--accent2); text-decoration: none; }
+    .contact-row a:hover { text-decoration: underline; }
+    .social-links { display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .5rem 1.1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 500;
+      transition: all .2s;
+    }
+    .social-link:hover { border-color: var(--accent); color: var(--text); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .82rem;
+      font-family: 'Fira Code', monospace;
+    }
+
+    /* ── DIVIDER ── */
+    .divider { border: none; border-top: 1px solid var(--border); max-width: 1100px; margin: 0 auto; }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem; }
+      .nav-links { gap: 1rem; }
+      .hero-btns { flex-direction: column; align-items: center; }
+      section { padding: 4rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">&lt;aminoden.dev /&gt;</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="avatar-ring">
+        <div class="avatar-inner">
+          <img src="avatar.png" alt="Aminoden Mangoda" class="avatar-photo">
+        </div>
+      </div>
+      <div class="badge"><span class="dot"></span> Open to opportunities</div>
+      <h1>Aminoden <span>Mangoda</span></h1>
+      <p class="hero-title-sub">IT Graduate &amp; Full-Stack Developer</p>
+      <p class="hero-location">📍 Marawi City, Philippines</p>
+      <p class="hero-sub">
+        BS Information Technology graduate with hands-on experience building full-stack web applications — from intuitive interfaces to reliable databases and automated systems. Passionate about creating technology that genuinely makes work easier.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">See My Work</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+    </div>
+  </div>
+
+<hr class="divider"/>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">// what I work with</p>
+  <h2>Skills &amp; Tools</h2>
+  <p class="section-desc">A versatile toolkit built through real projects — covering everything from the interface users see to the systems running behind the scenes.</p>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">🖥️</div>
+      <div class="skill-name">Web Interfaces</div>
+      <div class="skill-desc">React, JavaScript, HTML &amp; CSS — building responsive, user-friendly interfaces that work across all devices.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚙️</div>
+      <div class="skill-name">Backend &amp; Logic</div>
+      <div class="skill-desc">Node.js, Python, PHP, Java — building the server-side systems and logic that power applications.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🗄️</div>
+      <div class="skill-name">Data &amp; Databases</div>
+      <div class="skill-desc">PostgreSQL, MongoDB, Firebase — designing and managing databases with a major focus on SQL &amp; Database Systems.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <div class="skill-name">AI &amp; Automation</div>
+      <div class="skill-desc">Claude AI, GoHighLevel CRM — automating workflows and integrating AI-assisted tools into business systems.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">Data &amp; Productivity</div>
+      <div class="skill-desc">Microsoft Office, Google Sheets — organizing data, reporting, and supporting analytical decision-making.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🔗</div>
+      <div class="skill-name">Full-Stack Thinking</div>
+      <div class="skill-desc">Experienced across the entire development lifecycle — from initial database design to final user-facing features.</div>
+    </div>
+  </div>
+
+  <div class="tech-pills">
+    <span class="pill">React</span>
+    <span class="pill">JavaScript</span>
+    <span class="pill">HTML &amp; CSS</span>
+    <span class="pill">Node.js</span>
+    <span class="pill">Python</span>
+    <span class="pill">PHP</span>
+    <span class="pill">Java</span>
+    <span class="pill">PostgreSQL</span>
+    <span class="pill">MongoDB</span>
+    <span class="pill">Firebase</span>
+    <span class="pill">SQL</span>
+    <span class="pill">Claude AI</span>
+    <span class="pill">GoHighLevel</span>
+    <span class="pill">Google Sheets</span>
+    <span class="pill">Microsoft Office</span>
+  </div>
+
+  <div class="soft-grid">
+    <div class="soft-card"><span class="sc-icon">⚡</span> Fast learner, quick to adapt</div>
+    <div class="soft-card"><span class="sc-icon">🔍</span> Strong analytical mindset</div>
+    <div class="soft-card"><span class="sc-icon">🤝</span> Team-oriented collaborator</div>
+    <div class="soft-card"><span class="sc-icon">🎯</span> Detail-oriented &amp; organized</div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">// what I've built</p>
+  <h2>Projects</h2>
+  <p class="section-desc">Real systems built from the ground up — each one solving a genuine problem and delivering measurable results.</p>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-img p1">🐾</div>
+      <div class="project-body">
+        <div class="project-type">Capstone Project · 2025</div>
+        <div class="project-tags">
+          <span class="tag tag-react">React</span>
+          <span class="tag tag-node">Node.js</span>
+          <span class="tag tag-pg">PostgreSQL</span>
+        </div>
+        <h3>Petopia — Pet Clinic Appointment System</h3>
+        <p>A full-featured appointment management platform for veterinary clinics. Replaced manual scheduling with a structured digital system that handles bookings, patient records, and service tracking.</p>
+        <ul class="project-highlights">
+          <li>Role-based access for clinic staff, vets, and pet owners</li>
+          <li>Time-based calendar with conflict detection to eliminate double-bookings</li>
+          <li>Owner–pet–service mapping for accurate record management</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://github.com/Beyytoyy" target="_blank">⌥ GitHub</a>
+          <a href="https://epetopia.vercel.app/" target="_blank">🚀 Live Demo</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img p2">📋</div>
+      <div class="project-body">
+        <div class="project-type">Internship Project · 2025</div>
+        <div class="project-tags">
+          <span class="tag tag-react">React</span>
+          <span class="tag tag-node">Node.js</span>
+          <span class="tag tag-pg">PostgreSQL</span>
+        </div>
+        <h3>Client Survey Management System</h3>
+        <p>Built for the Center of Information and Communication Technology at MSU-IIT to digitize and streamline how client feedback is collected, stored, and reviewed.</p>
+        <ul class="project-highlights">
+          <li>Eliminated paper-based data entry and manual processing errors</li>
+          <li>Automated data storage with real-time access to survey results</li>
+          <li>Enabled faster, data-driven service evaluations for the team</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://github.com/beyytoyy/CSSM/tree/main/client-survey" target="_blank">⌥ GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img p3">🧾</div>
+      <div class="project-body">
+        <div class="project-type">Academic Project · 2024</div>
+        <div class="project-tags">
+          <span class="tag tag-react">React</span>
+          <span class="tag tag-js">JavaScript</span>
+          <span class="tag tag-sql">SQL</span>
+        </div>
+        <h3>POS System — Pharmacy &amp; Grocery</h3>
+        <p>A Point-of-Sale system built for MSU-IIT NMPC to handle transactions and inventory across both pharmacy and grocery operations from a single platform.</p>
+        <ul class="project-highlights">
+          <li>Clean, responsive interface for fast cashier transactions</li>
+          <li>Live inventory monitoring with low-stock tracking</li>
+          <li>Improved sales reporting accuracy and daily reconciliation</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://github.com/Beyytoyy" target="_blank">⌥ GitHub</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">// where I've worked</p>
+  <h2>Experience</h2>
+  <p class="section-desc">Hands-on development experience in a real institutional environment, working on systems used by actual staff and clients.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="tl-meta">2025</div>
+      <div class="tl-role">Full-Stack Developer Intern</div>
+      <div class="tl-company">Center of Information and Communication Technology · MSU-IIT</div>
+      <ul class="tl-list">
+        <li>Designed and built a Client Survey Management System used by institutional staff to collect and analyze client feedback digitally.</li>
+        <li>Automated data workflows that previously required manual input — significantly reducing errors and processing time.</li>
+        <li>Delivered real-time reporting features that gave the team immediate access to results for faster decision-making.</li>
+        <li>Collaborated closely with stakeholders to ensure the system matched real operational needs and workflows.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-label">// background</p>
+  <h2>Education</h2>
+  <p class="section-desc">A strong academic foundation in both software development and database systems.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="tl-meta">2021 — 2025</div>
+      <div class="tl-role">Bachelor of Science in Information Technology</div>
+      <div class="tl-company">Mindanao State University – Iligan Institute of Technology (MSU-IIT)</div>
+      <ul class="tl-list">
+        <li>Major in Database Systems — deep specialization in data architecture, SQL, and database design principles.</li>
+        <li>Built multiple full-stack systems as part of coursework, including a capstone project deployed for real use.</li>
+        <li>Graduated as a consistent Dean's Lister, reflecting strong academic performance throughout the program.</li>
+      </ul>
+      <div class="edu-badge">🏆 Dean's Lister</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">// about me</p>
+  <h2>A Bit About Aminoden</h2>
+  <div class="about-grid">
+    <div>
+      <p style="color:var(--muted); margin-bottom:1rem; line-height:1.7;">
+        I'm a fresh IT graduate from Marawi City, Philippines — motivated by the belief that good technology should make everyday work simpler, not harder. My academic focus on database systems gave me a solid foundation, but my real education came from building things that people actually use.
+      </p>
+      <p style="color:var(--muted); margin-bottom:1rem; line-height:1.7;">
+        I pick up new tools quickly and enjoy figuring out how systems fit together — from the screen a user sees to the data stored underneath. I'm just as comfortable working through a complex logic problem as I am refining a user interface until it feels right.
+      </p>
+      <p style="color:var(--muted); line-height:1.7;">
+        I'm actively looking for a team where I can keep growing, contribute meaningfully, and take on real responsibility from day one.
+      </p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Full-Stack Projects</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2025</div>
+        <div class="stat-label">IT Graduate</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">Dean's</div>
+        <div class="stat-label">Lister — MSU-IIT</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">6+</div>
+        <div class="stat-label">Technologies Used</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-card">
+    <p class="section-label" style="text-align:center;">// let's connect</p>
+    <h3>Open to Opportunities</h3>
+    <p>Whether it's a full-time role, freelance project, or just a conversation — I'd love to hear from you.</p>
+    <div class="contact-info">
+      <div class="contact-row">📧 <a href="mailto:aminoden24722@gmail.com">aminoden24722@gmail.com</a></div>
+      <div class="contact-row">📞 <span>+63 956 935 3828</span></div>
+      <div class="contact-row">📍 <span>Marawi City, Philippines</span></div>
+    </div>
+    <a href="mailto:aminoden24722@gmail.com" class="btn btn-primary">Send an Email</a>
+    <div class="social-links">
+      <a href="https://github.com/Beyytoyy" target="_blank" class="social-link">🐙 GitHub — Beyytoyy</a>
+      <a href="https://linkedin.com/in/aminoden-mangoda" target="_blank" class="social-link">💼 LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &lt;aminoden mangoda · full-stack developer · 2025 /&gt;
+</footer>
+
+</body>
+</html>
