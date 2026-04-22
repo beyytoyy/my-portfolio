@@ -77,5 +77,5 @@ git clone https://github.com/beyytoyy/my-portfolio.git
 ---
 
 <p align="center">
-  Made with ❤️ by Aminoden Mangoda · 2025
+  Made with ❤️ by Aminoden Mangoda · 2026
 </p>
