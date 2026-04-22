@@ -2,7 +2,7 @@
 
 > Personal portfolio website of Aminoden Mangoda, an IT Graduate and Full-Stack Developer from Marawi City, Philippines.
 
-🌐 **Live Site:** [my-portfolio-puce-iota-2lrf3szjyb.vercel.app]
+🌐 **Live Site:** [https://my-portfolio-puce-iota-2lrf3szjyb.vercel.app/]
 
 ---
 
