@@ -490,6 +490,107 @@
       .hero-photo-frame { width: 220px; height: 270px; }
       .photo-container { width: 185px; height: 235px; }
     }
+
+    /* ── PROJECTS ── */
+
+#projects {
+  background: var(--bg-section);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1.8rem;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-hover);
+  background: var(--card-hover);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.project-header h3 {
+  font-size: 1.1rem;
+  color: var(--body-text);
+}
+
+.project-badge {
+  background: rgba(69,201,184,0.12);
+  color: var(--teal-bright);
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.project-description {
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1.3rem;
+  font-size: 0.9rem;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.4rem;
+}
+
+.project-tech span {
+  background: rgba(69,201,184,0.08);
+  border: 1px solid rgba(69,201,184,0.15);
+  color: var(--teal-bright);
+  padding: 0.4rem 0.8rem;
+  border-radius: 30px;
+  font-size: 0.75rem;
+}
+
+.project-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-btn {
+  text-decoration: none;
+  background: linear-gradient(
+      135deg,
+      var(--teal),
+      var(--teal-light)
+  );
+  color: white;
+  padding: 0.75rem 1.2rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.project-btn:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
 <body>
@@ -502,6 +603,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#contact" class="nav-cta">Hire Me</a></li>
     </ul>
@@ -517,6 +619,7 @@
     <li><a href="#about" onclick="closeMobile()">About</a></li>
     <li><a href="#skills" onclick="closeMobile()">Skills</a></li>
     <li><a href="#experience" onclick="closeMobile()">Experience</a></li>
+    <li><a href="#projects" onclick="closeMobile()">Projects</a></li>
     <li><a href="#education" onclick="closeMobile()">Education</a></li>
     <li><a href="#contact" onclick="closeMobile()">Hire Me</a></li>
   </ul>
@@ -535,8 +638,8 @@
       <div class="hero-tag">Available for Remote Work</div>
       <h1 class="hero-name">Aminoden<br><span>Mangoda</span></h1>
       <p class="hero-title">
-        <strong>Virtual Assistant</strong> · <strong>IT Support</strong> · <strong>Administrative Specialist</strong><br>
-        BS Information Technology Graduate · Marawi City, Philippines
+        <strong>Full Stack Developer</strong> · <strong>React Developer</strong> · <strong>Backend Engineer</strong> <br>
+        BS Information Technology Graduate specializing in Full Stack Web Development, Database Systems, and Scalable Web Applications.
       </p>
       <div class="hero-btns">
         <a href="#contact" class="btn-primary"><span>💬</span> Let's Work Together</a>
@@ -557,7 +660,7 @@
             <span>MSU-IIT · 2025</span>
           </div>
         </div>
-        <div class="hero-badge2"><span>⚡ React · Node.js · PostgreSQL</span></div>
+        <div class="hero-badge2"><span>⚡ React · Node.js · Express · PostgreSQL · MySQL · Docker</span></div>
       </div>
     </div>
   </div>
@@ -572,9 +675,9 @@
           <div class="section-label">About Me</div>
           <h2 class="section-title">Detail-Oriented &amp;<br>Tech-Driven</h2>
         </div>
-        <p>I'm a motivated <strong>BS Information Technology</strong> graduate with a major in Database Systems from Mindanao State University – Iligan Institute of Technology. I specialize in virtual assistance, administrative support, and digital systems management.</p>
-        <p>With hands-on experience in supporting system workflows, organizing records, and handling both technical and administrative tasks, I bring a reliable and efficient approach to every project I take on.</p>
-        <p>I'm skilled in <strong>Google Workspace, Microsoft Office, database management, and communication tools</strong>, with the ability to adapt quickly to new platforms and technologies.</p>
+        <p>I'm a <strong>BS Information Technology</strong> graduate with a specialization in Database Systems from Mindanao State University – Iligan Institute of Technology. I have hands-on experience developing full-stack web applications using React, Node.js, Express.js, PostgreSQL, and MySQL.</p>
+        <p>During my internship, I contributed to the development and maintenance of web-based information systems, including frontend interfaces, backend APIs, database management, and system documentation. I enjoy building scalable, user-friendly applications that solve real-world problems.</p>
+        <p>My technical strengths include full-stack development, RESTful API integration, database design, system architecture, debugging, and performance optimization. I'm passionate about continuous learning and creating high-quality software solutions that deliver business value.</p>
         <div class="about-stats">
           <div class="stat-card"><div class="stat-num">4+</div><div class="stat-label">Years of Study</div></div>
           <div class="stat-card"><div class="stat-num">10+</div><div class="stat-label">Skills Mastered</div></div>
@@ -586,7 +689,7 @@
         <div class="info-row"><div class="info-icon">📍</div><div class="info-content"><div class="info-label">Location</div><div class="info-value">Marawi City, Philippines</div></div></div>
         <div class="info-row"><div class="info-icon">📧</div><div class="info-content"><div class="info-label">Email</div><div class="info-value"><a href="mailto:aminoden24722@gmail.com">aminoden24722@gmail.com</a></div></div></div>
         <div class="info-row"><div class="info-icon">📱</div><div class="info-content"><div class="info-label">Phone</div><div class="info-value"><a href="tel:+639569353828">+63 956 935 3828</a></div></div></div>
-        <div class="info-row"><div class="info-icon">💼</div><div class="info-content"><div class="info-label">LinkedIn</div><div class="info-value"><a href="#" target="_blank">Aminoden Mangoda</a></div></div></div>
+        <div class="info-row"><div class="info-icon">💼</div><div class="info-content"><div class="info-label">LinkedIn</div><div class="info-value"><a href="https://linkedin.com/in/aminoden-mangoda-35971134a" target="_blank">Aminoden Mangoda</a></div></div></div>
         <div class="info-row"><div class="info-icon">🐙</div><div class="info-content"><div class="info-label">GitHub</div><div class="info-value"><a href="https://github.com/Beyytoyy" target="_blank">Beyytoyy</a></div></div></div>
       </div>
     </div>
@@ -602,15 +705,77 @@
       <p class="section-sub">A versatile mix of administrative, technical, and communication skills built for remote work.</p>
     </div>
     <div class="skills-grid">
-      <div class="skill-card reveal"><div class="skill-icon">🖥️</div><div class="skill-name">Virtual Assistance</div><div class="skill-desc">End-to-end remote admin support, scheduling, correspondence, and digital task management.</div></div>
-      <div class="skill-card reveal"><div class="skill-icon">📊</div><div class="skill-name">Google Workspace & MS Office</div><div class="skill-desc">Docs, Sheets, Slides, Gmail, Drive, Excel, Word, PowerPoint — fully proficient.</div></div>
-      <div class="skill-card reveal"><div class="skill-icon">🗄️</div><div class="skill-name">Database Management</div><div class="skill-desc">Data entry, verification, record organization, and reporting using database and spreadsheet tools.</div></div>
-      <div class="skill-card reveal"><div class="skill-icon">📅</div><div class="skill-name">Email & Calendar Management</div><div class="skill-desc">Inbox handling, meeting scheduling, reminders, and professional communication.</div></div>
-      <div class="skill-card reveal"><div class="skill-icon">📝</div><div class="skill-name">Documentation & Reporting</div><div class="skill-desc">Workflow documentation, digital records, data reports, and organized filing systems.</div></div>
-      <div class="skill-card reveal"><div class="skill-icon">🤝</div><div class="skill-name">Team Collaboration</div><div class="skill-desc">Effective communication, cross-functional coordination, and proactive team support.</div></div>
-      <div class="skill-card reveal"><div class="skill-icon">⚡</div><div class="skill-name">React & Node.js</div><div class="skill-desc">Full-stack web development with modern JavaScript frameworks and server-side Node.js.</div></div>
-      <div class="skill-card reveal"><div class="skill-icon">🐘</div><div class="skill-name">PostgreSQL</div><div class="skill-desc">Relational database design, querying, and management for web applications and systems.</div></div>
-      <div class="skill-card reveal"><div class="skill-icon">🧠</div><div class="skill-name">Problem Solving & Adaptability</div><div class="skill-desc">Quick to learn new tools and technologies, with a solution-first mindset in any environment.</div></div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">⚛️</div>
+        <div class="skill-name">React.js</div>
+        <div class="skill-desc">
+          Building responsive and reusable frontend applications with React.
+        </div>
+      </div>
+      
+      <div class="skill-card reveal">
+        <div class="skill-icon">🟢</div>
+        <div class="skill-name">Node.js & Express.js</div>
+        <div class="skill-desc">
+          Developing RESTful APIs and backend services.
+        </div>
+      </div>
+      
+      <div class="skill-card reveal">
+        <div class="skill-icon">🗄️</div>
+        <div class="skill-name">PostgreSQL & MySQL</div>
+        <div class="skill-desc">
+          Database design, optimization, querying, and management.
+        </div>
+      </div>
+      
+      <div class="skill-card reveal">
+        <div class="skill-icon">🔗</div>
+        <div class="skill-name">REST API Integration</div>
+        <div class="skill-desc">
+          Consuming and integrating third-party APIs and backend services.
+        </div>
+      </div>
+      
+      <div class="skill-card reveal">
+        <div class="skill-icon">🎨</div>
+        <div class="skill-name">HTML, CSS & JavaScript</div>
+        <div class="skill-desc">
+          Creating modern and responsive user interfaces.
+        </div>
+      </div>
+      
+      <div class="skill-card reveal">
+        <div class="skill-icon">☁️</div>
+        <div class="skill-name">Cloud Deployment</div>
+        <div class="skill-desc">
+          Deploying applications using Railway, Render, Vercel, and cloud platforms.
+        </div>
+      </div>
+      
+      <div class="skill-card reveal">
+        <div class="skill-icon">🐳</div>
+        <div class="skill-name">Docker</div>
+        <div class="skill-desc">
+          Containerizing applications for development and deployment.
+        </div>
+      </div>
+      
+      <div class="skill-card reveal">
+        <div class="skill-icon">🔄</div>
+        <div class="skill-name">Git & GitHub</div>
+        <div class="skill-desc">
+          Version control, collaboration, and source code management.
+        </div>
+      </div>
+      
+      <div class="skill-card reveal">
+        <div class="skill-icon">🧩</div>
+        <div class="skill-name">Problem Solving & Debugging</div>
+        <div class="skill-desc">
+          Identifying, troubleshooting, and resolving application issues efficiently.
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -632,16 +797,154 @@
           </div>
           <div class="exp-role">Full-Stack Developer Intern</div>
           <ul class="exp-bullets">
-            <li>Maintained and organized digital records, client survey data, and workflow documentation throughout the internship.</li>
-            <li>Supported administrative and technical operations for a Client Survey Management System used across the institution.</li>
-            <li>Managed and verified database records to ensure data accuracy and organized reporting.</li>
-            <li>Coordinated with team members to improve workflow efficiency and reduce manual processes.</li>
-            <li>Assisted in documentation, data organization, and digital record management using spreadsheet and database tools.</li>
-            <li>Supported communication and operational tasks within the team environment.</li>
+            <li>Developed and maintained full-stack web applications using React.js, Node.js, Express.js, and PostgreSQL.</li>
+            <li>Designed and optimized relational database structures and SQL queries for efficient data management.</li>
+            <li>Built RESTful APIs to support frontend and backend communication.</li>
+            <li>Implemented CRUD functionalities, authentication systems, and role-based access controls.</li>
+            <li>Collaborated with developers and stakeholders to gather requirements and improve system functionality.</li>
+            <li>Debugged application issues, improved performance, and maintained code quality standards.</li>
+            <li>Participated in testing, deployment, documentation, and system maintenance activities.</li>
           </ul>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+
+    <div class="section-header reveal">
+      <div class="section-label">Projects</div>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-sub">
+        A collection of full-stack applications and systems I have developed
+        using modern web technologies.
+      </p>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <h3>Client Survey Management System</h3>
+          <span class="project-badge">Full Stack</span>
+        </div>
+
+        <p class="project-description">
+          A web-based survey management platform developed during my internship
+          at MSU-IIT. The system allows administrators to create surveys,
+          collect responses, generate reports, and manage users through a
+          secure dashboard.
+        </p>
+
+        <div class="project-tech">
+          <span>React</span>
+          <span>Node.js</span>
+          <span>Express</span>
+          <span>PostgreSQL</span>
+        </div>
+
+        <div class="project-buttons">
+          <a href="https://github.com/beyytoyy/CSSM.git"
+             target="_blank"
+             class="project-btn">
+             GitHub Repository
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <h3>Veterinary Appointment Management System</h3>
+          <span class="project-badge">Web App</span>
+        </div>
+
+        <p class="project-description">
+          A scheduling and appointment management system designed for veterinary
+          clinics. Features appointment tracking, pet management, service
+          records, and calendar integration.
+        </p>
+
+        <div class="project-tech">
+          <span>React</span>
+          <span>Node.js</span>
+          <span>PostgreSQL</span>
+          <span>FullCalendar</span>
+        </div>
+
+        <div class="project-buttons">
+          <a href="https://github.com/beyytoyy/petopia-frontend.git"
+             target="_blank"
+             class="project-btn">
+             GitHub Repository
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <h3>NAT Survey Application</h3>
+          <span class="project-badge">Deployment</span>
+        </div>
+
+        <p class="project-description">
+          A full-stack survey platform built with React, Node.js, and MySQL.
+          Supports survey submission, reporting, data management, and cloud
+          deployment.
+        </p>
+
+        <div class="project-tech">
+          <span>React</span>
+          <span>Node.js</span>
+          <span>MySQL</span>
+          <span>Railway</span>
+        </div>
+
+        <div class="project-buttons">
+          <a href="https://github.com/beyytoyy/nat-crud-app-fullstack.git"
+             target="_blank"
+             class="project-btn">
+             GitHub Repository
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <h3>Personal Portfolio Website</h3>
+          <span class="project-badge">Frontend</span>
+        </div>
+
+        <p class="project-description">
+          A responsive portfolio website showcasing my projects, skills,
+          education, and contact information with integrated EmailJS contact
+          functionality.
+        </p>
+
+        <div class="project-tech">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+          <span>EmailJS</span>
+        </div>
+
+        <div class="project-buttons">
+          <a href="https://github.com/beyytoyy/my-portfolio.git"
+             target="_blank"
+             class="project-btn">
+             GitHub Repository
+          </a>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </section>
 
@@ -683,13 +986,37 @@
         <div class="contact-card"><div class="contact-card-icon">📍</div><div><div class="contact-card-label">Location</div><div class="contact-card-value">Marawi City, Philippines</div></div></div>
       </div>
       <div class="contact-form-wrap reveal">
-        <div class="form-group"><label>Your Name</label><input type="text" placeholder="e.g. Maria Santos" /></div>
-        <div class="form-group"><label>Your Email</label><input type="email" placeholder="maria@example.com" /></div>
-        <div class="form-group"><label>Subject</label><input type="text" placeholder="Virtual Assistant Opportunity" /></div>
-        <div class="form-group"><label>Message</label><textarea rows="5" placeholder="Tell me about your project or role..."></textarea></div>
-        <button class="form-submit" onclick="handleSend()">Send Message →</button>
-        <p class="form-note">Or email directly at <a href="mailto:aminoden24722@gmail.com">aminoden24722@gmail.com</a></p>
-      </div>
+
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="name" placeholder="e.g. Maria Santos" />
+        </div>
+      
+        <div class="form-group">
+          <label>Your Email</label>
+          <input type="email" id="email" placeholder="maria@example.com" />
+        </div>
+      
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" id="subject" placeholder="Virtual Assistant Opportunity" />
+        </div>
+      
+        <div class="form-group">
+          <label>Message</label>
+          <textarea id="message" rows="5" placeholder="Tell me about your project or role..."></textarea>
+        </div>
+      
+        <button class="form-submit" onclick="handleSend()">
+          Send Message →
+        </button>
+      
+        <p class="form-note">
+          Or email directly at
+          <a href="mailto:aminoden24722@gmail.com">
+            aminoden24722@gmail.com
+          </a>
+        </p>
     </div>
   </div>
 </section>
@@ -706,8 +1033,9 @@
     </div>
   </div>
 </footer>
-
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
+  
   // ── THEME TOGGLE ──
   const html = document.documentElement;
   const toggleBtn = document.getElementById('themeToggle');
@@ -760,12 +1088,58 @@
       window.scrollY > 20 ? '0 4px 24px var(--shadow-nav)' : 'none';
   });
 
-  // ── CONTACT FORM ──
-  function handleSend() {
-    const btn = document.querySelector('.form-submit');
-    btn.textContent = '✓ Message Sent!';
-    setTimeout(() => { btn.textContent = 'Send Message →'; }, 3000);
+  emailjs.init("dF10B3pKXAOPaCNl9");
+
+async function handleSend() {
+
+  const btn = document.querySelector('.form-submit');
+
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const subject = document.getElementById('subject').value;
+  const message = document.getElementById('message').value;
+
+  if (!name || !email || !subject || !message) {
+    alert("Please fill in all fields.");
+    return;
   }
+
+  btn.disabled = true;
+  btn.textContent = "Sending...";
+
+  try {
+
+    await emailjs.send(
+      "service_w321cmm",
+      "template_jix59mc",
+      {
+        from_name: name,
+        from_email: email,
+        subject: subject,
+        message: message,
+      }
+    );
+
+    btn.textContent = "✓ Message Sent!";
+
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('subject').value = '';
+    document.getElementById('message').value = '';
+
+  } catch (error) {
+
+    console.error(error);
+    btn.textContent = "Failed to Send";
+
+  }
+
+  setTimeout(() => {
+    btn.disabled = false;
+    btn.textContent = "Send Message →";
+  }, 3000);
+}
+
 </script>
 </body>
 </html>
