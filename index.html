@@ -297,7 +297,7 @@
 
     /* ── ABOUT ── */
     #about { background: var(--bg-section-alt); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-grid { display: flex; flex-direction: column; gap: 2.5rem; }
     .about-text p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1.2rem; font-size: 1rem; }
     .about-text p strong { color: var(--body-text); }
     .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
@@ -675,22 +675,16 @@
           <div class="section-label">About Me</div>
           <h2 class="section-title">Detail-Oriented &amp;<br>Tech-Driven</h2>
         </div>
-        <p>I'm a <strong>BS Information Technology</strong> graduate with a specialization in Database Systems from Mindanao State University – Iligan Institute of Technology. I have hands-on experience developing full-stack web applications using React, Node.js, Express.js, PostgreSQL, and MySQL.</p>
-        <p>During my internship, I contributed to the development and maintenance of web-based information systems, including frontend interfaces, backend APIs, database management, and system documentation. I enjoy building scalable, user-friendly applications that solve real-world problems.</p>
-        <p>My technical strengths include full-stack development, RESTful API integration, database design, system architecture, debugging, and performance optimization. I'm passionate about continuous learning and creating high-quality software solutions that deliver business value.</p>
+        <p>I'm a <strong>BS Information Technology graduate specializing in Database Systems</strong> from Mindanao State University – Iligan Institute of Technology, with hands-on experience building and maintaining full-stack web applications..</p>
+        <p>I focus on developing <strong>scalable, efficient, and user-centered systems</strong> using modern technologies such as <strong>React, Node.js, Express.js, PostgreSQL, and MySQL</strong>. My goal is not just to build applications, but to create solutions that improve workflows, data management, and user experience.</p>
+        <p>During my internship, I contributed to the development of production-level web systems by working on <strong>frontend interfaces, backend APIs, database design, and system optimization.</strong> I also helped implement key features such as <strong>CRUD operations, authentication, and role-based access control</strong>, ensuring systems were both functional and secure.</p>
+        <p>I take pride in writing <strong>clean, maintainable code</strong> and designing <strong>well-structured databases and APIs</strong> that support long-term scalability. I enjoy solving real-world problems through technology and continuously improving my skills to keep up with modern development practices.</p>
         <div class="about-stats">
           <div class="stat-card"><div class="stat-num">4+</div><div class="stat-label">Years of Study</div></div>
           <div class="stat-card"><div class="stat-num">10+</div><div class="stat-label">Skills Mastered</div></div>
-          <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Remote Ready</div></div>
+          <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Remote Ready</div></div> 
           <div class="stat-card"><div class="stat-num">★</div><div class="stat-label">Dean's Lister</div></div>
         </div>
-      </div>
-      <div class="about-info-list reveal">
-        <div class="info-row"><div class="info-icon">📍</div><div class="info-content"><div class="info-label">Location</div><div class="info-value">Marawi City, Philippines</div></div></div>
-        <div class="info-row"><div class="info-icon">📧</div><div class="info-content"><div class="info-label">Email</div><div class="info-value"><a href="mailto:aminoden24722@gmail.com">aminoden24722@gmail.com</a></div></div></div>
-        <div class="info-row"><div class="info-icon">📱</div><div class="info-content"><div class="info-label">Phone</div><div class="info-value"><a href="tel:+639569353828">+63 956 935 3828</a></div></div></div>
-        <div class="info-row"><div class="info-icon">💼</div><div class="info-content"><div class="info-label">LinkedIn</div><div class="info-value"><a href="https://linkedin.com/in/aminoden-mangoda-35971134a" target="_blank">Aminoden Mangoda</a></div></div></div>
-        <div class="info-row"><div class="info-icon">🐙</div><div class="info-content"><div class="info-label">GitHub</div><div class="info-value"><a href="https://github.com/Beyytoyy" target="_blank">Beyytoyy</a></div></div></div>
       </div>
     </div>
   </div>
@@ -833,11 +827,13 @@
           <span class="project-badge">Full Stack</span>
         </div>
 
+        <!-- Project 1 -->
         <p class="project-description">
-          A web-based survey management platform developed during my internship
-          at MSU-IIT. The system allows administrators to create surveys,
-          collect responses, generate reports, and manage users through a
-          secure dashboard.
+          <strong>Problem:</strong> Manual survey collection and reporting created delays in data processing and analysis.<br><br>
+
+          <strong>Action:</strong> Developed a full-stack Survey Management System using React, Node.js, Express, and PostgreSQL with survey creation, response tracking, reporting, and user management features.<br><br>
+
+          <strong>Result:</strong> Streamlined survey administration, centralized response data, and improved report generation efficiency for administrators.
         </p>
 
         <div class="project-tech">
@@ -859,14 +855,16 @@
       <!-- Project 2 -->
       <div class="project-card reveal">
         <div class="project-header">
-          <h3>Veterinary Appointment Management System</h3>
+          <h3>PETOPIA: Veterinary Appointment Management System</h3>
           <span class="project-badge">Web App</span>
         </div>
 
         <p class="project-description">
-          A scheduling and appointment management system designed for veterinary
-          clinics. Features appointment tracking, pet management, service
-          records, and calendar integration.
+          <strong>Problem:</strong> Veterinary clinics needed a more organized way to manage appointments, pet records, and service schedules.<br><br>
+        
+          <strong>Action:</strong> Built a web-based Veterinary Appointment Management System with calendar scheduling, appointment tracking, pet management, and service record features using React, Node.js, PostgreSQL, and FullCalendar.<br><br>
+        
+          <strong>Result:</strong> Simplified appointment scheduling, reduced manual tracking, and improved clinic workflow efficiency.
         </p>
 
         <div class="project-tech">
@@ -893,9 +891,11 @@
         </div>
 
         <p class="project-description">
-          A full-stack survey platform built with React, Node.js, and MySQL.
-          Supports survey submission, reporting, data management, and cloud
-          deployment.
+          <strong>Problem:</strong> Managing and analyzing National Achievement Test survey responses manually was time-consuming and prone to errors.<br><br>
+        
+          <strong>Action:</strong> Developed and deployed a full-stack survey platform using React, Node.js, MySQL, and Railway with data management, reporting, and survey submission functionalities.<br><br>
+        
+          <strong>Result:</strong> Centralized survey data, improved reporting accuracy, and enabled easier access to survey insights.
         </p>
 
         <div class="project-tech">
@@ -922,9 +922,11 @@
         </div>
 
         <p class="project-description">
-          A responsive portfolio website showcasing my projects, skills,
-          education, and contact information with integrated EmailJS contact
-          functionality.
+          <strong>Problem:</strong> Needed a professional platform to showcase technical skills, projects, and contact information to potential employers.<br><br>
+        
+          <strong>Action:</strong> Designed and developed a fully responsive portfolio website using HTML, CSS, JavaScript, and EmailJS with modern UI/UX principles and contact automation.<br><br>
+        
+          <strong>Result:</strong> Created a professional online presence that highlights projects, skills, and achievements while making it easier for recruiters to connect.
         </p>
 
         <div class="project-tech">
@@ -1143,3 +1145,4 @@ async function handleSend() {
 </script>
 </body>
 </html>
+co
